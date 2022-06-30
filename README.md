@@ -1,7 +1,7 @@
 # A06_ComposeTheming
 
-This project is part of the Jetpack Compose CodeLab series turorial to better understand and learn about Jetpack Compose.
-In this project our focus is to learn about Meterial Theming using Jetpack Compose.
+This project is part of the Jetpack Compose CodeLab series tutorial to better understand and learn about Jetpack Compose.
+In this project our focus is to learn about Material Theming using Jetpack Compose.
 
 Jetpack Compose offers an implementation of Material Design—a comprehensive design system for creating digital interfaces. The Material Design components (Buttons, Cards, Switches etc) are built on top of Material Theming which is a systematic way to customize Material Design to better reflect your product's brand. A Material Theme comprises color, typography and shape attributes. Customizing these will be automatically reflected in the components you use to build your app.
 
@@ -16,3 +16,15 @@ Material supports using shapes systematically to convey your brand. It defines 3
 
 Baseline
 Material defaults to a "baseline" theme, that is the purple color scheme, Roboto type scale and slightly rounded shapes. If you do not specify or customize your theme then components will use the baseline theme.
+
+Note on Color
+1. To convert color values from the common ‘#dd0d3c' format for specifying colors, replace the ‘#' with ‘0xff' i.e. Color(0xffdd0d3c) where ‘ff' means full alpha.
+2. When defining colors, we name them "literally", based on the color value, rather than "semantically" e.g. Red500 not primary. This enables us to define multiple themes e.g. another color might be considered primary in dark theme or on a differently styled screen.
+3. If your brand doesn't have separate primary and secondary colors, then it's fine to supply the same color for both.
+
+Note on Typography
+1. In Compose we can define TextStyle objects to define the information needed to style some text.
+
+
+Dark Theme
+Supporting a dark theme in your app not only helps your app to integrate better on users' devices (which have a global dark theme toggle from Android 10 onward) but also can reduce power usage and support accessibility needs. Material offers design guidance [https://material.io/design/color/dark-theme.html] on creating a dark theme.

@@ -24,13 +24,20 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.a06_composetheming.data.Post
 import com.example.a06_composetheming.data.PostRepo
+import com.example.a06_composetheming.ui.theme.JetnewsTheme
 import java.util.*
 
 @Composable
 fun Home() {
     val featured = remember { PostRepo.getFeaturedPost() }
     val posts = remember { PostRepo.getPosts() }
-    MaterialTheme {
+
+    // Here we call the MaterialTheme but no parameters are specified, so our app
+    // will get the default 'baseline' styling. To customize our own theme and thus centralize
+    // our styling, it is best to create a composable that wraps and configures the MaterialTheme.
+    // We will do this in the Theme.kt file. Our new theme is JetnewsTheme which we will use here
+    // in place of MaterialTheme
+    JetnewsTheme {
         Scaffold(
             topBar = { AppBar() }
         ) { innerPadding ->
@@ -178,8 +185,21 @@ fun PostItem(
 @Composable
 private fun PostItemPreview() {
     val post = remember { PostRepo.getFeaturedPost() }
-    Surface {
-        PostItem(post = post)
+
+    JetnewsTheme {
+        Surface {
+            PostItem(post = post)
+        }
+    }
+}
+
+@Preview("Featured Post - Dark")
+@Composable
+private fun FeaturedPostDarkPreview() {
+    val post = remember { PostRepo.getFeaturedPost() }
+
+    JetnewsTheme(darkTheme = true) {
+        FeaturedPost(post = post)
     }
 }
 
@@ -187,7 +207,10 @@ private fun PostItemPreview() {
 @Composable
 private fun FeaturedPostPreview() {
     val post = remember { PostRepo.getFeaturedPost() }
-    FeaturedPost(post = post)
+
+    JetnewsTheme {
+        FeaturedPost(post = post)
+    }
 }
 
 @Preview("Home")
